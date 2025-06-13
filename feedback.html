@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Feedback</title>
+</head>
+<body>
+  <h2>📝 Submit Keyword Feedback</h2>
+
+  <form method="POST" action="https://myfunctionapprg123.azurewebsites.net/api/submit-feedback?code=EJFBFxtlkEAdF2KHC43m9fRga_2j0kYq-Kl6v1rOzAvwAzFuz5zR_w==">
+    <label for="keyword">🔍 Keyword:</label><br>
+    <input type="text" id="keyword" name="keyword" required><br><br>
+
+    <label for="feedbackType">💬 Feedback Type:</label><br>
+    <select id="feedbackType" name="feedbackType" required>
+      <option value="positive">Positive</option>
+      <option value="neutral">Neutral</option>
+      <option value="negative">Negative</option>
+    </select><br><br>
+
+    <button type="submit">✅ Submit Feedback</button>
+  </form>
+</body>
+</html>
