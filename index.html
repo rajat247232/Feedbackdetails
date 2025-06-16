@@ -5,10 +5,9 @@
   <title>Submit Feedback</title>
 </head>
 <body>
-  <!-- test deploy -->
   <h2>📝 Submit Keyword Feedback</h2>
 
-  <form method="POST" action="https://myfunctionapprg123.azurewebsites.net/api/submit-feedback?code=EJFBFxtlkEAdF2KHC43m9fRga_2j0kYq-Kl6v1rOzAvwAzFuz5zR_w==">
+  <form id="feedbackForm">
     <label for="keyword">🔍 Keyword:</label><br>
     <input type="text" id="keyword" name="keyword" required><br><br>
 
@@ -21,5 +20,37 @@
 
     <button type="submit">✅ Submit Feedback</button>
   </form>
+
+  <script>
+    document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const keyword = document.getElementById("keyword").value;
+      const feedbackType = document.getElementById("feedbackType").value;
+
+      fetch("https://myfunctionapprg123.azurewebsites.net/api/submit-feedback?code=EJFBFxtlkEAdF2KHC43m9fRga_2j0kYq-Kl6v1rOzAvwAzFuz5zR_w==", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          keyword: keyword,
+          feedbackType: feedbackType
+        })
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Failed to submit feedback");
+        return response.json();
+      })
+      .then(data => {
+        alert("Feedback submitted successfully!");
+        console.log(data);
+      })
+      .catch(error => {
+        alert("Error submitting feedback. Check console.");
+        console.error(error);
+      });
+    });
+  </script>
 </body>
 </html>
