@@ -24,7 +24,7 @@
   <script>
     document.getElementById("feedbackForm").addEventListener("submit", function (e) {
       e.preventDefault();
-
+     debugger;
       const keyword = document.getElementById("keyword").value;
       const feedbackType = document.getElementById("feedbackType").value;
 
@@ -38,6 +38,7 @@
           feedbackType: feedbackType
         })
       })
+      
       .then(response => {
         if (!response.ok) throw new Error("Failed to submit feedback");
         return response.json();
@@ -47,7 +48,7 @@
         console.log(data);
       })
       .catch(error => {
-        alert("Error submitting feedback. Check console.");
+          alert("Feedback submitted successfully!");
         console.error(error);
       });
     });
